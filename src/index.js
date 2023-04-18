@@ -43,8 +43,8 @@ function search(event) {
   h1.innerHTML = `${searchInput.value}`;
 
   let city = searchInput.value;
-  let key = "2980ff43226d67e53abfcdb6d457dcc8";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+  let key = "a8d8b06f3c747033oa766c71fbfca38t";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=0${key}&units=metric`;
 
   axios.get(url).then(showWeather);
 }
