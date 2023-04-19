@@ -37,7 +37,6 @@ function search(event) {
 }
 
 function showWeather(response) {
-  console.log(response.data);
   let temperature = Math.round(response.data.temperature.current);
   let degrees = document.querySelector("#temp-number");
   degrees.innerHTML = `${temperature}`;
