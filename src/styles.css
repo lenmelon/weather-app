@@ -11,9 +11,7 @@ h2 {
 }
 
 h1 {
-  font-size: 30px;
   display: inline;
-  font-weight: 500;
 }
 
 p {
@@ -41,6 +39,10 @@ img {
 
 form {
   margin: 10px;
+}
+
+.heading {
+  font-size: 26px;
 }
 
 .weather-app {
@@ -86,10 +88,10 @@ form {
   background: #f8f9fa;
 }
 
-#weather-description {
-  text-transform: capitalize;
-}
-
 .footer {
   font-size: 10px;
+}
+
+#weather-description {
+  text-transform: capitalize;
 }

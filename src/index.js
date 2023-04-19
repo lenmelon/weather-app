@@ -37,6 +37,7 @@ function search(event) {
 }
 
 function showWeather(response) {
+  console.log(response.data);
   let temperature = Math.round(response.data.temperature.current);
   let degrees = document.querySelector("#temp-number");
   degrees.innerHTML = `${temperature}`;
@@ -59,6 +60,12 @@ function showWeather(response) {
 
   let dateElement = document.querySelector("#current-date");
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
 }
 
 let form = document.querySelector("#search-form");
