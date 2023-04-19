@@ -51,6 +51,7 @@ form {
   margin: 20px auto;
   max-width: 600px;
   border-radius: 5px;
+  box-shadow: 2px 2px 2px #a5a5a5;
 }
 
 .weather-image {
@@ -90,6 +91,20 @@ form {
 
 .footer {
   font-size: 10px;
+}
+
+.active {
+  color: #212529;
+  cursor: default;
+  text-decoration: none;
+}
+
+#fahrenheit {
+  text-decoration: none;
+}
+
+#celsius {
+  text-decoration: none;
 }
 
 #weather-description {
