@@ -1,39 +1,26 @@
-let now = new Date();
-let hour = now.getHours();
-if (hour < 10) hour = `0${hour}`;
-let minutes = now.getMinutes();
-if (minutes < 10) minutes = `0${minutes}`;
-let date = now.getDate();
-let year = now.getFullYear();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-let day = days[now.getDay()];
-let months = [
-  "Jan",
-  "Feb",
-  "March",
-  "Apr",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let month = months[now.getMonth()];
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
-let currentDate = document.querySelector("#current-date");
-currentDate.innerHTML = `${day}, ${month} ${date}, ${hour}:${minutes} h`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day}, ${hours}:${minutes}`;
+}
 
 function search(event) {
   event.preventDefault();
@@ -44,24 +31,21 @@ function search(event) {
 
   let city = searchInput.value;
   let key = "a8d8b06f3c747033oa766c71fbfca38t";
-  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=0${key}&units=metric`;
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}&units=metric`;
 
   axios.get(url).then(showWeather);
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
-
 function showWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.temperature.current);
   let degrees = document.querySelector("#temp-number");
   degrees.innerHTML = `${temperature}`;
 
-  let precipitation = response.data.clouds.all;
-  let rainPercentage = document.querySelector("#precipitation");
-  rainPercentage.innerHTML = `${precipitation}%`;
+  let city = response.data.city;
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = `${city}`;
 
-  let humidity = response.data.main.humidity;
+  let humidity = response.data.temperature.humidity;
   let humidityPercentage = document.querySelector("#humidity");
   humidityPercentage.innerHTML = `${humidity}%`;
 
@@ -69,7 +53,13 @@ function showWeather(response) {
   let windSpeed = document.querySelector("#wind");
   windSpeed.innerHTML = `${wind} km/h`;
 
-  let description = response.data.weather[0].description;
+  let description = response.data.condition.description;
   let currentWeather = document.querySelector("#weather-description");
   currentWeather.innerHTML = `${description}`;
+
+  let dateElement = document.querySelector("#current-date");
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
