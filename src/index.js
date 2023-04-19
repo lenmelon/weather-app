@@ -22,20 +22,6 @@ function formatDate(timestamp) {
   return `${day}, ${hours}:${minutes}`;
 }
 
-function search(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-input");
-
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${searchInput.value}`;
-
-  let city = searchInput.value;
-  let key = "a8d8b06f3c747033oa766c71fbfca38t";
-  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}&units=metric`;
-
-  axios.get(url).then(showWeather);
-}
-
 function showWeather(response) {
   let temperature = Math.round(response.data.temperature.current);
   let degrees = document.querySelector("#temp-number");
@@ -67,5 +53,20 @@ function showWeather(response) {
   );
 }
 
+function search(city) {
+  let key = "a8d8b06f3c747033oa766c71fbfca38t";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}&units=metric`;
+
+  axios.get(url).then(showWeather);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-input");
+  search(searchInput.value);
+}
+
+search("Madrid");
+
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+form.addEventListener("submit", handleSubmit);
