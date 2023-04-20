@@ -17,8 +17,6 @@ h1 {
 p {
   font-size: 12px;
   text-align: center;
-  padding: 0;
-  margin: 0;
 }
 
 ul {
@@ -43,6 +41,8 @@ form {
 
 .heading {
   font-size: 26px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .weather-app {
@@ -69,12 +69,6 @@ form {
   font-weight: 500;
 }
 
-.border {
-  padding: 6px;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-
 .min-temp {
   color: #808589;
 }
@@ -83,9 +77,12 @@ form {
   text-align: center;
   cursor: pointer;
   line-height: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
 }
 
-.border:hover {
+.box:hover {
   background: #f8f9fa;
 }
 
@@ -99,6 +96,15 @@ form {
   text-decoration: none;
 }
 
+.forecast-day {
+  margin-top: 5px;
+  padding-top: 5px;
+}
+
+.search-button {
+  box-shadow: 5px 2px 2px #a5a5a5;
+}
+
 #fahrenheit {
   text-decoration: none;
 }
@@ -109,4 +115,10 @@ form {
 
 #weather-description {
   text-transform: capitalize;
+  margin-top: 5px;
+}
+
+#currrent-date {
+  margin: 5px;
+  padding: 5px;
 }
