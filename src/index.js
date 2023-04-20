@@ -22,7 +22,7 @@ function formatDate(timestamp) {
   return `${day}, ${hours}:${minutes} h`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -40,6 +40,13 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</div>`;
 
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(city) {
+  let key = "a8d8b06f3c747033oa766c71fbfca38t";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${key}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showWeather(response) {
@@ -72,6 +79,8 @@ function showWeather(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
+
+  getForecast(response.data.city);
 }
 
 function search(city) {
@@ -116,4 +125,3 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsius);
 
 search("Madrid");
-displayForecast();
