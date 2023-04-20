@@ -22,6 +22,26 @@ function formatDate(timestamp) {
   return `${day}, ${hours}:${minutes} h`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-sm box">
+      <div class="weather-forecast-date">${day}</div>
+        <img src="img/cloudy.png" width="60px" />
+          <p>21º <span class="min-temp">9º</span></p>
+      </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showWeather(response) {
   celsiusTemperature = response.data.temperature.current;
 
@@ -96,3 +116,4 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsius);
 
 search("Madrid");
+displayForecast();
