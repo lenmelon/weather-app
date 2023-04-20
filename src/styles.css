@@ -40,7 +40,7 @@ form {
 }
 
 .wrapper {
-  background: #d6e2e9;
+  background: #ffff;
 }
 
 .heading {
@@ -51,12 +51,12 @@ form {
 
 .weather-app {
   background: #fdfffc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 20px auto;
   max-width: 600px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .weather-image {
