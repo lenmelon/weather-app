@@ -73,13 +73,23 @@ form {
   color: #808589;
 }
 
-.box {
+.weather-forecast {
+  margin-top: 5px;
   text-align: center;
+  padding-top: 5px;
+}
+
+.box {
   cursor: pointer;
-  line-height: 16px;
-  padding: 5px;
   border-radius: 5px;
-  margin: 5px;
+  padding-top: 5px;
+  max-width: 20%;
+}
+
+.weather-forecast-date {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 5px;
 }
 
 .box:hover {
@@ -94,11 +104,6 @@ form {
   color: #212529;
   cursor: default;
   text-decoration: none;
-}
-
-.forecast-day {
-  margin-top: 5px;
-  padding-top: 5px;
 }
 
 .search-button {
